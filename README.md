@@ -19,42 +19,28 @@ The Radar Range Equation is a fundamental formula used in radar system design to
 
 ### Program
 ```
-clc;
-clear;
-close;
-Gt = 20;        
-Gr = 30;        
-lambda = 0.03;  
-sigma = 1;      
-Pmin = 1e-10;                 
-Pt = linspace(1,1000,100);    
-Rmax1 = ((Pt .* Gt .* Gr .* lambda^2 .* sigma) ./ ((4*%pi)^3 .* Pmin)).^(1/4);
-figure(1)
-plot(Pt, Rmax1)
-("Transmitted Power Pt")
-("Maximum Range Rmax")
-("Pt vs Rmax")
-xgrid()
-Pt_const = 500;                 
-Pmin2 = linspace(1e-12,1e-8,100);
-Rmax2 = ((Pt_const .* Gt .* Gr .* lambda^2 .* sigma) ./ ((4*%pi)^3 .* Pmin2)).^(1/4);
-figure(2)
-plot(Pmin2, Rmax2)
-("Minimum Detectable Power Pmin")
-("Maximum Range Rmax")
-("Pmin vs Rmax")
-xgrid()
-
+G=1000;
+lambda = 0.03;
+sigma = 1;
+Pmin = 1e-10;
+Pt = 1:100:10000;
+Rmax1= ((Pt.*(G^2).*(lambda^2).*sigma)./(((4*%pi)^3)*Pmin)).^(1/4);
+Pmin2 = 1e-12:1e-12:1e-9;
+Pt_const = 5000;
+Rmax2 = ((Pt_const*(G^2)*(lambda^2)*sigma)./ (((4*%pi)^3)*Pmin2)).^(1/4);
+subplot(2,1,1)
+plot(Pt,Rmax1)
+subplot(2,1,2)
+plot(Pmin2,Rmax2)
 ```
 
 ### Tabulation
 
- <img width="658" height="933" alt="image" src="https://github.com/user-attachments/assets/40845a13-27d9-4aec-b19f-96406059e371" />
+![WhatsApp Image 2026-04-08 at 21 02 13](https://github.com/user-attachments/assets/76e02568-11ad-45b5-ae19-2b4eda975913)
 
 ### Output
 
-<img width="1915" height="1198" alt="image" src="https://github.com/user-attachments/assets/1e9ef18b-6484-4d4e-84e4-a8c98baabd97" />
-<img width="1916" height="1198" alt="image" src="https://github.com/user-attachments/assets/5dd9be79-813e-4436-b040-9d19dbad772d" />
+<img width="1918" height="1130" alt="image" src="https://github.com/user-attachments/assets/3d761db3-4180-423f-934a-7f4c6f4333c5" />
 
 
 ### Result
